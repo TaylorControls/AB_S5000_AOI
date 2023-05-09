@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.03" TargetName="OutputDevice" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2020-12-12T05:05:45.013Z" ContainsContext="true" Owner="ETaylor" ExportDate="Mon May 09 09:47:26 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="TC_PackageSorterSystem">
+<DataTypes Use="Context">
+<DataType Name="DigitalOutput_Program" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Digital Output Program Bits
+Rev: 1.00]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZDigitalOut0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="LgclInput" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Input from program]]>
+</Description>
+</Member>
+<Member Name="Out" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut0" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Output to external device]]>
+</Description>
+</Member>
+<Member Name="EnblForceON" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut0" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Enable HMI Force ON]]>
+</Description>
+</Member>
+<Member Name="EnblForceOFF" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut0" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Enable HMI Force OFF]]>
+</Description>
+</Member>
+<Member Name="ForceON" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut0" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Force output ON]]>
+</Description>
+</Member>
+<Member Name="ForceOFF" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut0" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Force output OFF]]>
+</Description>
+</Member>
+<Member Name="StrobeON" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut0" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[One Shot ON output pulse]]>
+</Description>
+</Member>
+<Member Name="StrobeOFF" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut0" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[One Shot OFF output pulse]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZDigitalOut9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="OutEnbl" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut9" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Output enable interlock]]>
+</Description>
+</Member>
+<Member Name="PL" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalOut9" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Output Status Pilot Light]]>
+</Description>
+</Member>
+<Member Name="FlashON" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Pilot light flasher ON timer]]>
+</Description>
+</Member>
+<Member Name="FlashOFF" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Pilot light flasher OFF timer]]>
+</Description>
+</Member>
+<Member Name="DeviceName" DataType="String40" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[HMI Device Name]]>
+</Description>
+</Member>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="String40"/>
+</Dependencies>
+</DataType>
+<DataType Name="String40" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="40" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="OutputDevice" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2020-12-12T04:28:16.889Z" CreatedBy="DESKTOP-SEDREEG\Taylor" EditedDate="2020-12-12T05:05:45.013Z" EditedBy="DESKTOP-SEDREEG\Taylor" SoftwareRevision="v32.03"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Device" TagType="Base" DataType="DigitalOutput_Program" Usage="InOut" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Device Program Tag]]>
+</Description>
+</Parameter>
+<Parameter Name="In" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[INPUT DETECTED]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Out" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[OUTPUT INDICATOR]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Enable" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[OUTPUT ENABLE INDICATOR]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="OutBuffer" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Output Buffer Signal]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="FlashOut" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Pilot Light Flash Output Bit]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[
+FLASH TIMER SETPOINT FORCE
+
+]]>
+</Comment>
+<Text>
+<![CDATA[MOV(500,Device.FlashON.PRE)MOV(500,Device.FlashOFF.PRE);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[
+OUTPUT CONTROL LOGIC
+
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Device.LgclInput) XIC(Device.OutEnbl) XIO(Device.ForceON) XIO(Device.ForceOFF) OTE(OutBuffer) ,[XIC(Device.EnblForceON) XIC(Device.ForceON) ,[XIO(Device.ForceON) ,XIO(Device.EnblForceON) ] XIC(OutBuffer) ] OTE(Device.Out) ,XIC(Device.EnblForceOFF) XIC(Device.ForceOFF) OTU(Device.Out) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[
+PILOT LIGHT FLASHER CONTROL
+
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIO(Device.FlashOFF.DN) TON(Device.FlashON,?,?) XIC(Device.FlashON.DN) TON(Device.FlashOFF,?,?) ,XIC(Device.FlashON.DN) OTE(FlashOut) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[
+PILOT LIGHT STATUS INDICATOR
+
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Device.LgclInput) XIC(Device.OutEnbl) XIC(Device.Out) ,XIC(Device.LgclInput) XIO(Device.OutEnbl) XIO(Device.Out) XIC(FlashOut) ]OTE(Device.PL);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[
+AOI OUTPUT INDICATOR
+
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Device.LgclInput) OTE(In) ,XIC(Device.Out) OTE(Out) ,XIC(Device.OutEnbl) OTE(Enable) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="DigitalOutput_Program"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

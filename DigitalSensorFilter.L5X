@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.03" TargetName="DigitalSensorFilter" TargetType="AddOnInstructionDefinition" TargetRevision="3.0 " TargetLastEdited="2022-04-30T22:35:43.619Z" ContainsContext="true" Owner="ETaylor" ExportDate="Mon May 09 09:47:18 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="TC_PackageSorterSystem">
+<DataTypes Use="Context">
+<DataType Name="DigitalSensor_Program" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Digital Sensor UDT
+Rev: 3.01]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZDigitalSen0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="In" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalSen0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Raw input from physical device]]>
+</Description>
+</Member>
+<Member Name="LgclStts" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalSen0" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Logical status of the physical device]]>
+</Description>
+</Member>
+<Member Name="Invrt" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalSen0" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Config: Invert input bit, (0=NO, 1=YES)]]>
+</Description>
+</Member>
+<Member Name="CnclEnbl" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalSen0" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Config: Enable cancel feature on the HMI]]>
+</Description>
+</Member>
+<Member Name="Cancel" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalSen0" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Cancel Device Input]]>
+</Description>
+</Member>
+<Member Name="Fltrd" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalSen0" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Filtered input of the device]]>
+</Description>
+</Member>
+<Member Name="FltrdOnPulse" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalSen0" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Filtered On Pulse]]>
+</Description>
+</Member>
+<Member Name="FltrdOffPulse" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDigitalSen0" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Filtered Off Pulse]]>
+</Description>
+</Member>
+<Member Name="FilterON" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Filter ON timer]]>
+</Description>
+</Member>
+<Member Name="FilterOFF" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Filter OFF timer]]>
+</Description>
+</Member>
+<Member Name="Ons" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ons Word]]>
+</Description>
+</Member>
+<Member Name="OnPrst" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[On timer preset from HMI]]>
+</Description>
+</Member>
+<Member Name="OffPrst" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Off timer preset from HMI]]>
+</Description>
+</Member>
+<Member Name="DeviceName" DataType="String40" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Device Name for HMI]]>
+</Description>
+</Member>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="String40"/>
+</Dependencies>
+</DataType>
+<DataType Name="String40" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="40" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="DigitalSensorFilter" Revision="3.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2020-12-11T22:22:41.209Z" CreatedBy="DESKTOP-SEDREEG\Taylor" EditedDate="2022-04-30T22:35:43.619Z" EditedBy="LAPTOP-RPK88R61\ETaylor" SoftwareRevision="v32.03"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="SensorTag" TagType="Base" DataType="DigitalSensor_Program" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="INPUT" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="LOGICAL" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="FILTERED" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags/>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[
+FILTER LOGIC
+
+]]>
+</Comment>
+<Text>
+<![CDATA[[[XIO(SensorTag.Invrt) XIC(SensorTag.In) [XIO(SensorTag.Cancel) ,XIO(SensorTag.CnclEnbl) ] ,[XIC(SensorTag.Invrt) XIO(SensorTag.In) ,XIC(SensorTag.CnclEnbl) XIC(SensorTag.Cancel) ] ] OTE(SensorTag.LgclStts) [TON(SensorTag.FilterON,?,?) ,TOF(SensorTag.FilterOFF,?,?) ] ,XIC(SensorTag.FilterON.DN) OTL(SensorTag.Fltrd) ,XIO(SensorTag.FilterOFF.DN) OTU(SensorTag.Fltrd) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[
+FILTERED ON / OFF PULSE
+This is used for tracking parts better with a one shot with the rising and falling edge of the signal
+
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SensorTag.LgclStts) ONS(SensorTag.Ons.0) OTE(SensorTag.FltrdOnPulse) ,XIO(SensorTag.LgclStts) ONS(SensorTag.Ons.1) OTE(SensorTag.FltrdOffPulse) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[[GRT(SensorTag.OnPrst,0) CMP((SensorTag.OnPrst*1000)<>SensorTag.FilterON.PRE) MUL(SensorTag.OnPrst,1000,SensorTag.FilterON.PRE) ,GRT(SensorTag.OffPrst,0) CMP((SensorTag.OffPrst*1000)<>SensorTag.FilterOFF.PRE) MUL(SensorTag.OffPrst,1000,SensorTag.FilterOFF.PRE) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[
+AOI OUTPUT MAPPING
+
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(SensorTag.In) OTE(INPUT) ,XIC(SensorTag.LgclStts) OTE(LOGICAL) ,XIC(SensorTag.Fltrd) OTE(FILTERED) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="DigitalSensor_Program"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>
